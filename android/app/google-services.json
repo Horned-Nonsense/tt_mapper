@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "668981714203",
+    "project_id": "tt-mapper",
+    "storage_bucket": "tt-mapper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668981714203:android:60e54d1eda5d2a64d947be",
+        "android_client_info": {
+          "package_name": "com.example.tt_mapper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668981714203-e1fen84s3204bspv5mnet3h4g551duq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMP_H21cMjTsP3QMMnuvl_9hmtfgahFrE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668981714203-4m19k5to6bib6l119ae61idfr1chkitn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "668981714203-jcfifivgjq8hfrtjbt15rq12n7hkk2ia.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ttMapper"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
