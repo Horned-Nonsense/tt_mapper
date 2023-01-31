@@ -9,5 +9,5 @@ import 'locator.dart';
   asExtension: false,
 )
 Future<void> configureDependencies() async {
-  await $configureDependencies(locator);
+  $configureDependencies(locator);
 }
