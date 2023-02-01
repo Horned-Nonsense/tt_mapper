@@ -4,6 +4,9 @@
         android:label="tt_mapper"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA_u6NgDM9i1ncy7787h2QqSUnoYkQF5tk" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
