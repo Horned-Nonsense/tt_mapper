@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 
 import 'config/di/locator.dart';
 import 'config/router/app_router.gr.dart';
@@ -20,10 +21,9 @@ class MapperApp extends StatelessWidget {
 
   const MapperApp._();
 
-void _onStateChanged(BuildContext _, AppControlState state) {
+  void _onStateChanged(BuildContext _, AppControlState state) {
     switch (state.status) {
       case AppControlStatus.initial:
-        break;
       case AppControlStatus.unauthenticated:
         router.resetToLoginPage();
         break;
@@ -39,20 +39,24 @@ void _onStateChanged(BuildContext _, AppControlState state) {
   @override
   Widget build(BuildContext context) {
     final appRouter = locator<AppRouter>();
-    return BlocConsumer<AppControlCubit, AppControlState>(
-      listener: _onStateChanged,
-      builder: (context, state) {
-        return MaterialApp.router(
-          routerDelegate: AutoRouterDelegate(
-            appRouter,
-            navigatorObservers: () => [
-              MapperObserver(),
-              AutoRouteObserver(),
-            ],
-          ),
-          routeInformationParser: appRouter.defaultRouteParser(),
-          routeInformationProvider: appRouter.routeInfoProvider(),
-          debugShowCheckedModeBanner: false,
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return BlocConsumer<AppControlCubit, AppControlState>(
+          listener: _onStateChanged,
+          builder: (context, state) {
+            return MaterialApp.router(
+              routerDelegate: AutoRouterDelegate(
+                appRouter,
+                navigatorObservers: () => [
+                  MapperObserver(),
+                  AutoRouteObserver(),
+                ],
+              ),
+              routeInformationParser: appRouter.defaultRouteParser(),
+              routeInformationProvider: appRouter.routeInfoProvider(),
+              debugShowCheckedModeBanner: false,
+            );
+          },
         );
       },
     );

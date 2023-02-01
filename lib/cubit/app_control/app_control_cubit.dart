@@ -9,7 +9,7 @@ import '../core/base_cubit.dart';
 
 part 'app_control_state.dart';
 
-@singleton
+@injectable
 class AppControlCubit extends BaseCubit<AppControlState> {
   final AuthService _authService;
   late final StreamSubscription<User?> _userSubscription;
@@ -19,10 +19,6 @@ class AppControlCubit extends BaseCubit<AppControlState> {
   ) : super(const AppControlState(
           status: AppControlStatus.initial,
         )) {
-    init();
-  }
-
-  Future<void> init() async {
     _userSubscription =
         _authService.authStateChanges.listen(_onUserAuthStateChanged);
   }

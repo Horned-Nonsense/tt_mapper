@@ -22,6 +22,6 @@ class NotaroRouter extends BaseRouter {
   }
 
   Future<void> resetToLoginPage() async {
-    replace(const LoginRoute());
+    pushAndClearStack(const LoginRoute());
   }
 }
