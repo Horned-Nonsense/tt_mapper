@@ -19,6 +19,8 @@ class AuthService extends BaseService {
 
   User? get currentUser => _firebaseAuth.currentUser;
 
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+
   CollectionReference<Map<String, dynamic>> get users =>
       db.collection(FirebaseConstants.usersCollection);
 

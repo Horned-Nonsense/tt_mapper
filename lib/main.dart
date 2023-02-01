@@ -15,7 +15,6 @@ void main() async {
   );
   await configureDependencies();
 
-  runApp(const MapperApp());
+  runApp(MapperApp.create());
   FlutterNativeSplash.remove();
 }
-
