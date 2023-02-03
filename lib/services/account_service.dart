@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 import '../api/models/requests/update_user_request.dart';
@@ -27,11 +29,23 @@ class AccountService extends BaseService {
     return await user;
   }
 
-  Future<void> updateUserData(MapperUser user) async {
+  Future<void> getCurrentUserLocation() async {
+    await makeErrorHandledCall(() async {
+      await Geolocator.requestPermission()
+          .then((myLocation) {})
+          .onError((error, stackTrace) async {
+        await Geolocator.requestPermission();
+      });
+      final location = await Geolocator.getCurrentPosition();
+      await _updateUserData(location);
+    });
+  }
+
+  Future<void> _updateUserData(Position location) async {
     await makeErrorHandledCall(() async {
       await _authService.users.doc(_authService.currentUser?.uid).update(
             UpdateUserRequest(
-              location: user.location,
+              location: LatLng(location.latitude, location.longitude),
             ).toJson(),
           );
     });

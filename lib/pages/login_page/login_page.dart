@@ -37,21 +37,32 @@ void _onStateChanged(
 class _LoginPageState extends State<LoginPage> {
   LoginPageCubit get cubit => context.read();
 
+  //TODO: Refactor an UI
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginPageCubit, LoginPageState>(
       listener: _onStateChanged,
       builder: (context, state) {
         return Scaffold(
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _buildSignInWithGoogleButton(),
-            ],
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildLogo(),
+                const SizedBox(height: 20),
+                _buildSignInWithGoogleButton(),
+              ],
+            ),
           ),
         );
       },
+    );
+  }
+
+  Widget _buildLogo() {
+    return const FlutterLogo(
+      size: 300,
+      style: FlutterLogoStyle.horizontal,
     );
   }
 
@@ -60,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
       child: ElevatedButton(
         onPressed: cubit.signInWithGoogle,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
         ),
         child: Text.rich(
           TextSpan(
@@ -79,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: PlaceholderAlignment.top,
                 child: Image.asset(
                   'assets/images/google_logo.png',
-                  width: 16,
+                  width: 20,
                   filterQuality: FilterQuality.medium,
                 ),
               ),

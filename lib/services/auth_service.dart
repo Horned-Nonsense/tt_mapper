@@ -26,10 +26,7 @@ class AuthService extends BaseService {
 
   Future<void> signInWithGoogle() async {
     await makeErrorHandledCall(() async {
-      final provider = GoogleAuthProvider().setCustomParameters({
-        FirebaseConstants.googleAuthProviderPrompt:
-            FirebaseConstants.googleAuthProviderSelectAccount,
-      });
+      final provider = GoogleAuthProvider();
       final credential = await _firebaseAuth.signInWithProvider(provider);
       final newUser = credential.user;
       if (newUser != null) {
@@ -68,5 +65,9 @@ class AuthService extends BaseService {
             avatarUrl: avatarURL,
           ).toJson(),
         );
+  }
+
+  Future<void> signOut() async {
+    await _firebaseAuth.signOut();
   }
 }

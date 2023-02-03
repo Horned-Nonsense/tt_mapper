@@ -11,13 +11,14 @@ import 'package:tt_mapper/config/router/app_router.gr.dart' as _i3;
 import 'package:tt_mapper/config/router/mapper_router.dart' as _i6;
 import 'package:tt_mapper/cubit/app_control/app_control_cubit.dart' as _i10;
 import 'package:tt_mapper/cubit/login_page/login_page_cubit.dart' as _i5;
+import 'package:tt_mapper/cubit/map_page/map_page_cubit.dart' as _i11;
 import 'package:tt_mapper/services/account_service.dart' as _i9;
 import 'package:tt_mapper/services/auth_service.dart' as _i4;
 import 'package:tt_mapper/services/user_service/user_firestore_service.dart'
     as _i8;
 import 'package:tt_mapper/services/user_service/user_service.dart' as _i7;
 
-import 'modules/router_module.dart' as _i11;
+import 'modules/router_module.dart' as _i12;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -45,7 +46,12 @@ _i1.GetIt $configureDependencies(
   gh.singleton<_i9.AccountService>(_i9.AccountService(gh<_i4.AuthService>()));
   gh.factory<_i10.AppControlCubit>(
       () => _i10.AppControlCubit(gh<_i4.AuthService>()));
+  gh.factory<_i11.MapPageCubit>(() => _i11.MapPageCubit(
+        gh<_i4.AuthService>(),
+        gh<_i9.AccountService>(),
+        gh<_i7.UserService>(instanceName: 'UserFirestoreService'),
+      ));
   return getIt;
 }
 
-class _$RouterModule extends _i11.RouterModule {}
+class _$RouterModule extends _i12.RouterModule {}

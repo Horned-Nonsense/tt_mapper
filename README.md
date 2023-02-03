@@ -1,16 +1,11 @@
-# tt_mapper
+Test Task
 
-A new Flutter project.
+Firebase is used for data storage; AutoRoute is used to navigate between screens; Cubit is used to process business logic.
 
-## Getting Started
+Fetures:
+1. Splash screen.
+2. Authorization using a Google account. It also provides sign out.
+3. The map displays a marker of your location and markers of users nearby. It is possible to move to your location.
+4. User profile.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Warning! It was tested only on Android.

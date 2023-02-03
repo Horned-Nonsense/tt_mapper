@@ -8,7 +8,7 @@ import 'user_service.dart';
 import '../../utils/firebase_utils.dart';
 import '../../models/mapper_user.dart';
 
-Future<MapperUser> snapshotToUser(
+Future<MapperUser> _snapshotToUser(
   DocumentSnapshot<Map<String, dynamic>> value,
 ) async {
   return MapperUserResponse.fromJson(value.getMapped()).toMapperUser();
@@ -17,4 +17,15 @@ Future<MapperUser> snapshotToUser(
 @named
 @Injectable(as: UserService)
 class UserFirestoreService extends UserService
-    with FirebaseInstanceMixin, FirebasePathMixin {}
+    with FirebaseInstanceMixin, FirebasePathMixin {
+  @override
+  Stream<List<MapperUser>> getUsersAround() {
+    return firestore
+        .collection(usersCollectionName)
+        .where(
+          locationField,
+          isNull: false,
+        )
+        .getAsyncMappedStream(_snapshotToUser);
+  }
+}
