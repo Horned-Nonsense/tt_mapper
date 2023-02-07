@@ -37,7 +37,6 @@ void _onStateChanged(
 class _LoginPageState extends State<LoginPage> {
   LoginPageCubit get cubit => context.read();
 
-  //TODO: Refactor an UI
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginPageCubit, LoginPageState>(

@@ -1,6 +1,5 @@
 part of 'map_page_cubit.dart';
 
-//TODO: Change statuses on better
 enum MapPageStatus {
   initial,
   loading,
